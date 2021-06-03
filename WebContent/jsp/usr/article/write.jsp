@@ -11,9 +11,8 @@
 
 	<div>
 		<form action="doWrite" method="POST">
-			<input type="hidden" name="boardId"
-				value="${board.id}" /> <input
-				type="hidden" name="memberId" value="1" />
+			<input type="hidden" name="boardId" value="${board.id}" />
+			<input type="hidden" name="memberId" value="1" />
 
 			<hr />
 
@@ -39,7 +38,7 @@
 				<div>작성</div>
 				<div>
 					<input type="submit" value="작성" />
-					<button type="button" onclick="history.back();"">뒤로가기</button>
+					<button type="button" onclick="history.back();">뒤로가기</button>
 				</div>
 			</div>
 		</form>

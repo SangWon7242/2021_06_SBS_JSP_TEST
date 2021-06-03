@@ -8,7 +8,7 @@
 
 <h1>${pageTitle}</h1>
 
-<c:forEach var="member" items="${members}">
+<c:forEach items="${members}" var="member">
 	<div>
 		번호 : ${member.id}
 		<br /> 

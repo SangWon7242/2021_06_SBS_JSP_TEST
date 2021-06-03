@@ -16,6 +16,7 @@ public class Member {
 	private String name;
 	private String nickname;
 	private String email;
+	private String cellphoneNo;
 	private int authLevel;
 
 	private String extra__writer;
@@ -31,6 +32,7 @@ public class Member {
 		this.name = (String) map.get("name");
 		this.nickname = (String) map.get("nickname");
 		this.email = (String) map.get("email");
+		this.cellphoneNo = (String) map.get("cellphoneNo");
 		this.authLevel = (int) map.get("authLevel");
 	}
 
