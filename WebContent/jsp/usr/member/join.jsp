@@ -10,8 +10,34 @@
 <h1>${pageTitle}</h1>
 
 	<div>
-		<script>
+		<script>	
 			let DoJoinForm__submited = false; // 안보내는 걸 가정으로 시작(true로 바꾸면 보냄)
+			let DoJoinForm__checkedLoginId = "";
+			
+			// 로그인 아이디 중복체크
+			function DoJoinForm__checkLoginIdDup(el){
+				const from = $(el).closest('form').get(0);
+				const loginId = from.loginId.value;
+				
+				$.get(
+					"getLoginIdDup",
+					{
+						loginId
+					},
+					function(data) {
+						if(data.msg){
+							alert(data.msg);
+						}
+						
+						if(data.resultCode.substr(0, 2) == "S-"){
+							DoJoinForm__checkedLoginId = data.loginId;
+						}
+					},
+					"json"
+				);
+			}
+			
+			// 폼 발송 전 체크
 			function DoJoinForm__submit(form){
 				
 				if(DoJoinForm__submited){
@@ -26,6 +52,11 @@
 					form.loginId.focus();
 					
 					return;
+				}
+				if (form.loginId.value != DoJoinForm__checkedLoginId){
+					alert("로그인 아이디 중복검사를 해주세요.");
+					form.btnLoginIdDupCheck.focus();
+					return false;
 				}
 				
 				form.loginPw.value = form.loginPw.value.trim();
@@ -99,7 +130,8 @@
 			<div>
 				<div>로그인 아이디</div>
 				<div>
-					<input name="loginId" type="text" maxlength="50" placeholder="아이디를 입력해주세요" />
+					<input name="loginId" type="text" maxlength="50" placeholder="로그인 아이디를 입력해주세요" />
+					<button onclick= "DoJoinForm__checkLoginIdDup(this);" name="btnLoginIdDupCheck" type="button">중복체크</button>
 				</div>
 			</div>
 
@@ -108,7 +140,7 @@
 			<div>
 				<div>로그인 비밀번호</div>
 				<div>
-					<input name="loginPw" type="password" maxlength="50" placeholder="비밀번호를 입력해주세요" />			
+					<input name="loginPw" type="password" maxlength="50" placeholder="로그인 비밀번호를 입력해주세요" />			
 				</div>
 			</div>
 			

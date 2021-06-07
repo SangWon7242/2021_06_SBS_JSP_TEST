@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/*폰트 적용*/
+@font-face {
+    font-family: 'ELAND_Choice_M';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+	font-family : 'ELAND_Choice_M', sans-serif;
+}
+
+/*노말라이즈*/
+
+body,ul,li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/*라이브러리*/
+.con {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*커스텀*/
+:root {
+	--site-width : 1200px;
+}
+
+.con-min.width {
+	min-width: 320px;
+}
+
+.con {
+	max-width: var(--site-width);
+}
